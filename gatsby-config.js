@@ -16,14 +16,11 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
-        contentTypes: [
-          `article`,
-          `user`
-        ],
+        apiURL: process.env.DEPLOY_URL
+          ? "https://strapi-samtay-demo.herokuapp.com"
+          : `http://localhost:1337`,
+        contentTypes: [`article`, `user`],
         queryLimit: 1000,
-
-
       },
     },
     `gatsby-transformer-sharp`,

@@ -19,6 +19,8 @@ const ArticleTemplate = ({ data }) => (
       transformImageUri={uri =>
         uri.startsWith("http") ? uri : `${process.env.IMAGE_BASE_URL}${uri}`
       }
+      className="articleContent"
+      escapeHtml={false}
     />
   </Layout>
 )

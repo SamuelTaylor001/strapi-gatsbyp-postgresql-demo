@@ -4,6 +4,7 @@ import Img from "gatsby-image"
 import Reactmarkdown from "react-markdown"
 
 import Layout from "../components/layout"
+import "../styles/global.css"
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -20,13 +21,15 @@ const IndexPage = ({ data }) => (
 
           <Img fixed={document.node.image.childImageSharp.fixed} />
           <Reactmarkdown
-            source={document.node.content}
+            source={document.node.content.substring(0, 500).concat("...")}
             transformImageUri={uri =>
               uri.startsWith("http")
                 ? uri
                 : `${process.env.IMAGE_BASE_URL}${uri}`
             }
+            className={"indexArticle"}
           />
+          <Link to={`/${document.node.id}`}>Read more</Link>
         </li>
       ))}
     </ul>
